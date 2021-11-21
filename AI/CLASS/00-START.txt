@@ -1,0 +1,315 @@
+MACHINE LEARNING
+	SUPERVISED LEARNING - TRAINING DATA IS LABELLED, "OUTPUT" IS KNOWN. LABEL=OUTPUT, INPUT=FEATURES
+
+(a) Regression —In a regression problem, we are trying to predict results within a continuous output.
+
+(b) Classification — we are instead trying to predict results in a discrete output. In other words, we are trying to map input variables into discrete categories.
+
+
+
+		REGRESSION - the output of the model is continuous
+			Linear regression
+
+		CLASSIFICATION - DISCRETE VALUED OUTPUT (DOG/CAT)
+			LOGISTIC REGRESSION (NOT REGRESSION IT IS CLASSIFICATION) IT MAKES A CURVE AND THEN PREDICTS 0/1
+			SVM - MAKES A BOUNDARY BETWEEN THE DATA POINT (CLASSES)
+			DECISION TREE - ASK QUESTIONS AND FOLLOWS A TREE - MORE NODES WILL CAUSE OVERFITTING
+			RANDOM FOREST - ensemble learning technique that uses multiple decision trees
+							select the output which has maximum votes
+			Naive Bayes - Its working is based on the Bayes theorem.
+			Neural Network - The neural network finds patterns in the dataset, 
+							which sometimes even humans can not recognize. 
+							They are very powerful and can be of great use, 
+							especially when dealing with images, text, and audio.
+
+	UNSUPERVISED LEARNING - In unsupervised learning, the data that you use for 
+							training models is “Unlabeled”. This means you only have input. 
+
+							With unsupervised learning, there is no feedback based on the prediction results.
+							
+		Clustering: Clustering is used for analyzing and grouping data which does not include pre-labeled class or class attributes.
+
+		Association: Association discovers the probability of the co-occurrence of items in a collection.
+
+		CLUSTERING - 	Clustering involves the grouping or clustering of data 
+						points based on some criteria. It is used for customer segmentation, fraud detection, document classification, etc.
+
+		Dimensionality reduction - It involves reducing the number of input variables under 
+									consideration by finding/extracting a set of more important variables. There are two ways to reduce the input features by feature elimination or by feature extraction.
+
+
+
+scipy
+numpy
+matplotlib
+pandas
+sklearn
+
+
+# Check the versions of libraries
+ 
+# Python version
+import sys
+print('Python: {}'.format(sys.version))
+# scipy
+import scipy
+print('scipy: {}'.format(scipy.__version__))
+# numpy
+import numpy
+print('numpy: {}'.format(numpy.__version__))
+# matplotlib
+import matplotlib
+print('matplotlib: {}'.format(matplotlib.__version__))
+# pandas
+import pandas
+print('pandas: {}'.format(pandas.__version__))
+# scikit-learn
+import sklearn
+print('sklearn: {}'.format(sklearn.__version__))
+
+
+
+# Load libraries
+from pandas import read_csv
+from pandas.plotting import scatter_matrix
+from matplotlib import pyplot
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import StratifiedKFold
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+
+
+# Load dataset
+url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
+names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+dataset = read_csv(url, names=names)
+
+
+3. Summarize the Dataset
+	Dimensions of the dataset.
+	Peek at the data itself.
+	Statistical summary of all attributes.
+	Breakdown of the data by the class variable.
+
+
+3.1 Dimensions of Dataset
+# shape
+print(dataset.shape)
+
+3.2 Peek at the Data
+# head
+print(dataset.head(20))
+
+
+3.3 Statistical Summary
+
+# descriptions
+print(dataset.describe())
+
+3.4 Class Distribution
+# class distribution
+print(dataset.groupby('class').size())
+
+class
+Iris-setosa        50
+Iris-versicolor    50
+Iris-virginica     50
+
+3.5 Complete Example
+
+# summarize the data
+from pandas import read_csv
+# Load dataset
+url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
+names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+dataset = read_csv(url, names=names)
+# shape
+print(dataset.shape)
+# head
+print(dataset.head(20))
+# descriptions
+print(dataset.describe())
+# class distribution
+print(dataset.groupby('class').size())
+
+4. Data Visualization
+
+Univariate plots to better understand each attribute.
+Multivariate plots to better understand the relationships between attributes.
+
+4.1 Univariate Plots
+
+# box and whisker plots
+dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
+pyplot.show()
+
+# histograms
+dataset.hist()
+pyplot.show()
+
+# scatter plot matrix
+scatter_matrix(dataset)
+pyplot.show()
+
+4.3 Complete Example
+
+# visualize the data
+from pandas import read_csv
+from pandas.plotting import scatter_matrix
+from matplotlib import pyplot
+# Load dataset
+url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
+names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+dataset = read_csv(url, names=names)
+# box and whisker plots
+dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
+pyplot.show()
+# histograms
+dataset.hist()
+pyplot.show()
+# scatter plot matrix
+scatter_matrix(dataset)
+pyplot.show()
+
+5.1 Create a Validation Dataset
+
+# Split-out validation dataset
+array = dataset.values
+X = array[:,0:4]
+y = array[:,4]
+X_train, X_validation, Y_train, Y_validation = train_test_split(X, y, test_size=0.20, random_state=1)
+
+5.3 Build Models
+
+Let’s test 6 different algorithms:
+
+	Logistic Regression (LR)
+	Linear Discriminant Analysis (LDA)
+	K-Nearest Neighbors (KNN).
+	Classification and Regression Trees (CART).
+	Gaussian Naive Bayes (NB).
+	Support Vector Machines (SVM).
+
+
+
+# Spot Check Algorithms
+models = []
+models.append(('LR', LogisticRegression(solver='liblinear', multi_class='ovr')))
+models.append(('LDA', LinearDiscriminantAnalysis()))
+models.append(('KNN', KNeighborsClassifier()))
+models.append(('CART', DecisionTreeClassifier()))
+models.append(('NB', GaussianNB()))
+models.append(('SVM', SVC(gamma='auto')))
+# evaluate each model in turn
+results = []
+names = []
+for name, model in models:
+	kfold = StratifiedKFold(n_splits=10, random_state=1, shuffle=True)
+	cv_results = cross_val_score(model, X_train, Y_train, cv=kfold, scoring='accuracy')
+	results.append(cv_results)
+	names.append(name)
+	print('%s: %f (%f)' % (name, cv_results.mean(), cv_results.std()))
+
+
+# Compare Algorithms
+pyplot.boxplot(results, labels=names)
+pyplot.title('Algorithm Comparison')
+pyplot.show()
+
+
+5.5 Complete Example
+
+# compare algorithms
+from pandas import read_csv
+from matplotlib import pyplot
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import StratifiedKFold
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+# Load dataset
+url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
+names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+dataset = read_csv(url, names=names)
+# Split-out validation dataset
+array = dataset.values
+X = array[:,0:4]
+y = array[:,4]
+X_train, X_validation, Y_train, Y_validation = train_test_split(X, y, test_size=0.20, random_state=1, shuffle=True)
+# Spot Check Algorithms
+models = []
+models.append(('LR', LogisticRegression(solver='liblinear', multi_class='ovr')))
+models.append(('LDA', LinearDiscriminantAnalysis()))
+models.append(('KNN', KNeighborsClassifier()))
+models.append(('CART', DecisionTreeClassifier()))
+models.append(('NB', GaussianNB()))
+models.append(('SVM', SVC(gamma='auto')))
+# evaluate each model in turn
+results = []
+names = []
+for name, model in models:
+	kfold = StratifiedKFold(n_splits=10, random_state=1, shuffle=True)
+	cv_results = cross_val_score(model, X_train, Y_train, cv=kfold, scoring='accuracy')
+	results.append(cv_results)
+	names.append(name)
+	print('%s: %f (%f)' % (name, cv_results.mean(), cv_results.std()))
+# Compare Algorithms
+pyplot.boxplot(results, labels=names)
+pyplot.title('Algorithm Comparison')
+pyplot.show()
+
+
+6.1 Make Predictions
+
+# Make predictions on validation dataset
+model = SVC(gamma='auto')
+model.fit(X_train, Y_train)
+predictions = model.predict(X_validation)
+
+6.2 Evaluate Predictions
+
+# Evaluate predictions
+print(accuracy_score(Y_validation, predictions))
+print(confusion_matrix(Y_validation, predictions))
+print(classification_report(Y_validation, predictions))
+
+6.3 Complete Example
+
+# make predictions
+from pandas import read_csv
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
+from sklearn.svm import SVC
+# Load dataset
+url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
+names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+dataset = read_csv(url, names=names)
+# Split-out validation dataset
+array = dataset.values
+X = array[:,0:4]
+y = array[:,4]
+X_train, X_validation, Y_train, Y_validation = train_test_split(X, y, test_size=0.20, random_state=1)
+# Make predictions on validation dataset
+model = SVC(gamma='auto')
+model.fit(X_train, Y_train)
+predictions = model.predict(X_validation)
+# Evaluate predictions
+print(accuracy_score(Y_validation, predictions))
+print(confusion_matrix(Y_validation, predictions))
+print(classification_report(Y_validation, predictions))
+
+

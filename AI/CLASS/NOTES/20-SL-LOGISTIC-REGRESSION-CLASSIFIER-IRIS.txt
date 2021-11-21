@@ -1,0 +1,46 @@
+https://github.com/codebasics/py/blob/master/ML/7_logistic_reg/7_logistic_regression.ipynb
+
+# import load_iris function from datasets module
+from sklearn.datasets import load_iris
+
+# save "bunch" object containing iris dataset and its attributes
+iris = load_iris()
+
+# store feature matrix in "X"
+X = iris.data
+
+# store response vector in "y"
+y = iris.target
+
+# print the shapes of X and y
+print(X.shape)
+print(y.shape)
+
+(150, 4)
+(150,)
+
+# import the class
+from sklearn.linear_model import LogisticRegression
+
+# instantiate the model
+logreg = LogisticRegression(solver='liblinear')
+
+# fit the model with data
+logreg.fit(X, y)
+
+# LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+                   intercept_scaling=1, l1_ratio=None, max_iter=100,
+                   multi_class='auto', n_jobs=None, penalty='l2',
+                   random_state=None, solver='liblinear', tol=0.0001, verbose=0,
+                   warm_start=False)
+
+logreg.predict([[3, 5, 4, 2]])
+
+array([2])
+
+X_new = [[3, 5, 4, 2], [5, 4, 3, 2]]
+# predict the response for new observations
+logreg.predict(X_new)
+
+array([2, 0])
+

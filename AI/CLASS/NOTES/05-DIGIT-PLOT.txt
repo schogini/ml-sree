@@ -1,0 +1,32 @@
+
+
+https://ml-cheatsheet.readthedocs.io/en/latest/datasets.html
+
+https://github.com/codebasics/py/blob/master/ML/9_decision_tree/Exercise/titanic.csv
+
+# import load_iris function from datasets module
+from sklearn.datasets import load_iris
+
+# save "bunch" object containing iris dataset and its attributes
+iris = load_iris()
+
+# store feature matrix in "X"
+X = iris.data
+
+# store response vector in "y"
+y = iris.target
+
+
+(X_train, y_train) , (X_test, y_test) = keras.datasets.mnist.load_data()
+
+len(X_train)
+
+len(X_test)
+
+X_train[0].shape
+
+X_train[0]
+
+plt.matshow(X_train[3])
+
+

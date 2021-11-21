@@ -1,0 +1,10 @@
+https://github.com/justmarkham/scikit-learn-videos/blob/master/08_grid_search.ipynb
+
+Agenda
+How can K-fold cross-validation be used to search for an optimal tuning parameter?
+How can this process be made more efficient?
+How do you search for multiple tuning parameters at once?
+What do you do with those tuning parameters before making real predictions?
+How can the computational expense of this process be reduced?
+
+

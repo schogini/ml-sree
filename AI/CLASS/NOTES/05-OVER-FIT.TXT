@@ -1,0 +1,4 @@
+
+https://www.youtube.com/watch?v=0pP4EwWJgIU
+
+https://github.com/justmarkham/scikit-learn-videos/blob/master/05_model_evaluation.ipynb

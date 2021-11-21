@@ -1,0 +1,90 @@
+Machine Learning Glossary
+https://ml-cheatsheet.readthedocs.io/en/latest/
+
+Linear Regression
+	https://ml-cheatsheet.readthedocs.io/en/latest/linear_regression.html
+
+	Linear Regression is a supervised machine learning algorithm where the predicted output is continuous and has a constant slope. It’s used to predict values within a continuous range, (e.g. sales, price) rather than trying to classify them into categories (e.g. cat, dog). 
+
+		Simple regression
+			Simple linear regression uses traditional slope-intercept form, where 𝑚 and 𝑏 are the variables our algorithm will try to “learn” to produce the most accurate predictions. 𝑥 represents our input data and 𝑦 represents our prediction.
+			𝑦=𝑚𝑥+𝑏
+
+		Multivariable regression
+
+			A more complex, multi-variable linear equation might look like this, where 𝑤 represents the coefficients, or weights, our model will try to learn.
+
+			𝑓(𝑥,𝑦,𝑧)=𝑤1𝑥+𝑤2𝑦+𝑤3𝑧
+			The variables 𝑥,𝑦,𝑧 represent the attributes, or distinct pieces of information, we have about each observation. For sales predictions, these attributes might include a company’s advertising spend on radio, TV, and newspapers.
+			𝑆𝑎𝑙𝑒𝑠=𝑤1𝑅𝑎𝑑𝑖𝑜+𝑤2𝑇𝑉+𝑤3𝑁𝑒𝑤𝑠
+
+
+	Cost function
+		The prediction function is nice, but for our purposes we don’t really need it. What we need is a cost function so we can start optimizing our weights.
+
+	Gradient descent
+		To minimize MSE we use Gradient Descent to calculate the gradient of our cost function. Gradient descent consists of looking at the error that our weight currently gives us, using the derivative of the cost function to find the gradient (The slope of the cost function using our current weight), and then changing our weight to move in the direction opposite of the gradient. We need to move in the opposite direction of the gradient since the gradient points up the slope instead of down it, so we move in the opposite direction to try to decrease our error.
+
+	https://ml-cheatsheet.readthedocs.io/en/latest/linear_regression.html
+
+
+
+	Training
+		Training a model is the process of iteratively improving your prediction equation by looping through the dataset multiple times, each time updating the weight and bias values in the direction indicated by the slope of the cost function (gradient). Training is complete when we reach an acceptable error threshold, or when subsequent training iterations fail to reduce our cost.
+
+		Before training we need to initialize our weights (set default values), set our hyperparameters (learning rate and number of iterations), and prepare to log our progress over each iteration.
+
+
+
+	Normalization
+		As the number of features grows, calculating gradient takes longer to compute. We can speed this up by “normalizing” our input data to ensure all values are within the same range. This is especially important for datasets with high standard deviations or differences in the ranges of the attributes. Our goal now will be to normalize our features so they are all in the range -1 to 1
+
+
+	Making predictions
+		Our predict function outputs an estimate of sales given our current weights (coefficients) and a company’s TV, radio, and newspaper spend. Our model will try to identify weight values that most reduce our cost function.
+		𝑆𝑎𝑙𝑒𝑠=𝑊1𝑇𝑉+𝑊2𝑅𝑎𝑑𝑖𝑜+𝑊3𝑁𝑒𝑤𝑠𝑝𝑎𝑝𝑒𝑟
+
+	Model evaluation
+		After training our model through 1000 iterations with a learning rate of .0005, we finally arrive at a set of weights we can use to make predictions:
+
+		𝑆𝑎𝑙𝑒𝑠=4.7𝑇𝑉+3.5𝑅𝑎𝑑𝑖𝑜+.81𝑁𝑒𝑤𝑠𝑝𝑎𝑝𝑒𝑟+13.9
+		Our MSE cost dropped from 110.86 to 6.25.
+
+GOASSARY https://ml-cheatsheet.readthedocs.io/en/latest/glossary.html
+
+Logistic Regression
+	https://ml-cheatsheet.readthedocs.io/en/latest/logistic_regression.html
+	Logistic regression is a classification algorithm used to assign observations to a discrete set of classes. Unlike linear regression which outputs continuous number values, logistic regression transforms its output using the logistic sigmoid function to return a probability value which can then be mapped to two or more discrete classes.
+
+
+	Types of logistic regression
+		Binary (Pass/Fail)
+		Multi (Cats, Dogs, Sheep)
+		Ordinal (Low, Medium, High)
+
+	Binary logistic regression
+		Say we’re given data on student exam results and our goal is to predict whether a student will pass or fail based on number of hours slept and hours spent studying. We have two features (hours slept, hours studied) and two classes: passed (1) and failed (0).
+
+		Studied	Slept	Passed
+		4.85	9.63	1
+		8.62	3.23	0
+		5.43	8.23	1
+		9.21	6.34	0
+
+	Multiclass logistic regression
+		Instead of 𝑦=0,1 we will expand our definition so that 𝑦=0,1...𝑛. Basically we re-run binary classification multiple times, once for each class.
+
+
+
+	Sigmoid activation
+		In order to map predicted values to probabilities, we use the sigmoid function. The function maps any real value into another value between 0 and 1. In machine learning, we use sigmoid to map predictions to probabilities.
+
+
+	Decision boundary
+		Our current prediction function returns a probability score between 0 and 1. In order to map this to a discrete class (true/false, cat/dog), we select a threshold value or tipping point above which we will classify values into class 1 and below which we classify values into class 2.
+		𝑝≥0.5,𝑐𝑙𝑎𝑠𝑠=1𝑝<0.5,𝑐𝑙𝑎𝑠𝑠=0
+
+
+
+Neural Networks
+	https://ml-cheatsheet.readthedocs.io/en/latest/nn_concepts.html

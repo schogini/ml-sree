@@ -1,0 +1,37 @@
+
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+
+model.fit(X_train, y_train)
+
+# LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+                   intercept_scaling=1, l1_ratio=None, max_iter=100,
+                   multi_class='auto', n_jobs=None, penalty='l2',
+                   random_state=None, solver='lbfgs', tol=0.0001, verbose=0,
+                   warm_start=False)
+
+X_test
+
+age
+16	25
+21	26
+1	25
+17	58
+2	47
+24	50
+
+y_predicted = model.predict(X_test)
+
+model.predict_proba(X_test)
+
+array([[0.93630859, 0.06369141],
+       [0.9264839 , 0.0735161 ],
+       [0.93630859, 0.06369141],
+       [0.08361538, 0.91638462],
+       [0.33177366, 0.66822634],
+       [0.23827077, 0.76172923]])
+
+model.score(X_test,y_test)
+
+0.8333333333333334
+

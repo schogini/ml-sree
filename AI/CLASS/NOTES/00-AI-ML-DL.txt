@@ -1,0 +1,78 @@
+
+BEST
+https://towardsdatascience.com/5-minutes-cheat-sheet-explaining-all-machine-learning-models-3fea1cf96f05
+
+
+
+https://towardsdatascience.com/comparative-study-on-classic-machine-learning-algorithms-24f9ff6ab222
+
+https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/
+
+https://link.springer.com/article/10.1007/s42979-021-00592-x
+
+https://www.dummies.com/programming/big-data/data-science/machine-learning-dummies-cheat-sheet/
+
+Algorithm	Type	Python/R URL
+Naïve Bayes	Supervised classification, online learning	https://scikit-learn.org/stable/modules/naive_bayes.html
+
+PCA	Unsupervised	https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html
+
+SVD	Unsupervised	https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html
+
+K-means	Unsupervised	https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+
+K-Nearest Neighbors	Supervised regression and classification	https://scikit-learn.org/stable/modules/neighbors.html
+
+Linear Regression	Supervised regression, online learning	https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
+
+Logistic Regression	Supervised classification, online learning	https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+
+Neural Networks	Unsupervised Supervised regression and classification	https://scikit-learn.org/dev/modules/neural_networks_supervised.html
+
+Support Vector Machines	Supervised regression and classification	https://scikit-learn.org/stable/modules/svm.html
+
+Adaboost	Supervised classification	https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html
+
+Gradient Boosting	Supervised regression and classification	https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html
+
+Random Forest	Supervised regression and classification
+
+
+
+ML
+ * Supervised learning
+    * Classification - Logistic Regression - Logistic regression is the right 
+                        algorithm to start with classification algorithms. 
+                        Eventhough, the name ‘Regression’ comes up, it is 
+                        not a regression model, but a classification model.
+        Image classification
+        Machine translation
+    * Linear Regression - it’ll take features and predict 
+                        a continuous output, 
+                        eg : stock price,salary 
+  
+        Stock prediction
+        Image masking
+
+    * KNN - K-nearest neighbors - is a non-parametric method used for 
+                                  classification and regression
+    * Decision Tree - a tree based algorithm used to solve 
+                      regression and classification problems
+
+  Unsupervised learning
+    ML
+      Dimension reduction
+        PCA
+        t-SNE(more for visualization)
+      Clustering GMMs
+        K-mean
+        GMMs
+        HMMs
+    DL 
+      Representation learning 
+        Mutual information - MINE/DIM
+        Disentanglement - VAE
+        Information bottleneck
+      Generative models
+        GANS
+        VAE

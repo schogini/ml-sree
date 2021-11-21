@@ -1,0 +1,5 @@
+
+IRIS
+
+https://github.com/codebasics/py/tree/master/ML/10_svm
+

@@ -1,0 +1,48 @@
+
+
+# conventional way to import pandas
+import pandas as pd
+
+# read CSV file from the 'data' subdirectory using a relative path
+data = pd.read_csv('drive/MyDrive/Colab Notebooks/Advertising.csv', index_col=0)
+
+# display the first 5 rows
+data.head()
+
+TV	Radio	Newspaper	Sales
+1	230.1	37.8	69.2	22.1
+2	44.5	39.3	45.1	10.4
+3	17.2	45.9	69.3	9.3
+4	151.5	41.3	58.5	18.5
+5	180.8	10.8	58.4	12.9
+
+
+# conventional way to import seaborn
+import seaborn as sns
+
+# allow plots to appear within the notebook
+%matplotlib inline
+
+# visualize the relationship between the features and the response using scatterplots
+sns.pairplot(data, x_vars=['TV','Radio','Newspaper'], y_vars='Sales', height=7, aspect=0.7, kind='reg')
+
+
+data = pd.read_csv('drive/MyDrive/Colab Notebooks/homeprices2.csv')
+data.head()
+area	bedrooms	age	price
+0	2600	3.0	20	550000
+1	3000	4.0	15	565000
+2	3200	NaN	18	610000
+3	3600	3.0	30	595000
+4	4000	5.0	8	760000
+
+sb.pairplot(data, x_vars=['area','bedrooms','age'], y_vars='price', height=7, aspect=0.7, kind='reg')
+
+sb.pairplot(data)
+
+
+https://seaborn.pydata.org/generated/seaborn.pairplot.html
+
+penguins = sb.load_dataset("penguins")
+sb.pairplot(penguins)
+

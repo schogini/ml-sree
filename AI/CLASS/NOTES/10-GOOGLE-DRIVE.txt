@@ -1,0 +1,9 @@
+
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+
+df = pd.read_csv('drive/MyDrive/Colab Notebooks/homeprices.csv')
+df
+

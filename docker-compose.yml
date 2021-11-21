@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+
+#SreeMacMin16GB-1215:SreeMD sree$ docker compose exec jp jupyter notebook password
+#Enter password: sree123
+#[NotebookPasswordApp] Wrote hashed password to /home/jovyan/.jupyter/jupyter_notebook_config.json
+
+  jp:
+      image: schogini/jp  
+      # build: jupyter
+      # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html
+      # image: jupyter/minimal-notebook
+      # docker run -p 8888:8888 -v /Users/yourname/yourdirectory:/home/jovyan/work jupyter/minimal-notebook
+      # docker run -d -p 8888:8888 jupyter/base-notebook start-notebook.sh --NotebookApp.password='sha1:74ba40f8a388:c913541b7ee99d15d5ed31d4226bf7838f83a50e'
+      ports:
+          - '8888:8888'
+      volumes:
+          - .:/home/jovyan/work
+
+# docker compose exec jp bash
+# cd work
+# jupyter nbconvert --to markdown np01.ipynb 
+
+# docker compose exec jp md/j2md.sh

@@ -1,0 +1,68 @@
+df.head()
+Out[25]:
+Pclass Sex    Age    Fare   Survived
+0      3      male   22.0   7.2500 0
+1      1      female 38.0   71.2833       1
+2      3      female 26.0   7.9250 1
+3      1      female 35.0   53.1000       1
+4      3      male   35.0   8.0500 0
+In [26]:
+inputs = df.drop('Survived',axis='columns')
+target = df.Survived
+In [5]:
+#inputs.Sex = inputs.Sex.map({'male': 1, 'female': 2})
+In [27]:
+dummies = pd.get_dummies(inputs.Sex)
+dummies.head(3)
+Out[27]:
+female male
+0      0      1
+1      1      0
+2      1      0
+In [28]:
+inputs = pd.concat([inputs,dummies],axis='columns')
+inputs.head(3)
+Out[28]:
+Pclass Sex    Age    Fare   female male
+0      3      male   22.0   7.2500 0      1
+1      1      female 38.0   71.2833       1      0
+2      3      female 26.0   7.9250 1      0
+I am dropping male column as well because of dummy variable trap theory. One column is enough to repressent male vs female
+
+In [29]:
+inputs.drop(['Sex','male'],axis='columns',inplace=True)
+inputs.head(3)
+Out[29]:
+Pclass Age    Fare   female
+0      3      22.0   7.2500 0
+1      1      38.0   71.2833       1
+2      3      26.0   7.9250 1
+In [30]:
+inputs.columns[inputs.isna().any()]
+Out[30]:
+Index(['Age'], dtype='object')
+In [10]:
+inputs.Age[:10]
+Out[10]:
+0    22.0
+1    38.0
+2    26.0
+3    35.0
+4    35.0
+5     NaN
+6    54.0
+7     2.0
+8    27.0
+9    14.0
+Name: Age, dtype: float64
+In [31]:
+inputs.Age = inputs.Age.fillna(inputs.Age.mean())
+inputs.head()
+Out[31]:
+Pclass Age    Fare   female
+0      3      22.0   7.2500 0
+1      1      38.0   71.2833       1
+2      3      26.0   7.9250 1
+3      1      35.0   53.1000       1
+4      3      35.0   8.0500 0
+In [12]:

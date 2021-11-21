@@ -1,0 +1,12 @@
+
+
+https://medium.com/developer-student-clubs/guide-for-the-tensorflow-developer-certificate-exam-29706fd4d90
+
+https://github.com/mrdbourke/tensorflow-deep-learning
+
+BOOK
+https://dev.mrdbourke.com/tensorflow-deep-learning/00_tensorflow_fundamentals/
+
+UDEMY
+https://www.udemy.com/course/tensorflow-developer-certificate-machine-learning-zero-to-mastery/learn/lecture/25124554#overview
+

@@ -1,0 +1,151 @@
+
+https://github.com/codebasics/py/blob/master/ML/13_kmeans/13_kmeans_tutorial.ipynb
+
+https://www.youtube.com/watch?v=EItlUEPCIzM
+0:00 introduction 
+0:08 Theory - Explanation of Supervised vs Unsupervised learning and how kmeans clustering works. kmeans is unsupervised learning  
+5:00 Elbow method 
+7:33 Coding (start) (Cluster people income based on age) 
+9:38 sklearn.cluster KMeans model creation and training  
+14:56 Use MinMaxScaler from sklearn 
+
+
+
+Clustering With K Means - Python Tutorial
+In [196]:
+from sklearn.cluster import KMeans
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+from matplotlib import pyplot as plt
+%matplotlib inline
+In [197]:
+df = pd.read_csv("income.csv")
+df.head()
+Out[197]:
+Name    Age Income($)
+0   Rob 27  70000
+1   Michael 29  90000
+2   Mohan   29  61000
+3   Ismail  28  60000
+4   Kory    42  150000
+In [198]:
+plt.scatter(df.Age,df['Income($)'])
+plt.xlabel('Age')
+plt.ylabel('Income($)')
+Out[198]:
+<matplotlib.text.Text at 0x159c7655ac8>
+
+In [199]:
+km = KMeans(n_clusters=3)
+y_predicted = km.fit_predict(df[['Age','Income($)']])
+y_predicted
+Out[199]:
+array([2, 2, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0])
+In [200]:
+df['cluster']=y_predicted
+df.head()
+Out[200]:
+Name    Age Income($)   cluster
+0   Rob 27  70000   2
+1   Michael 29  90000   2
+2   Mohan   29  61000   0
+3   Ismail  28  60000   0
+4   Kory    42  150000  1
+In [201]:
+km.cluster_centers_
+Out[201]:
+array([[  3.29090909e+01,   5.61363636e+04],
+       [  3.82857143e+01,   1.50000000e+05],
+       [  3.40000000e+01,   8.05000000e+04]])
+In [202]:
+df1 = df[df.cluster==0]
+df2 = df[df.cluster==1]
+df3 = df[df.cluster==2]
+plt.scatter(df1.Age,df1['Income($)'],color='green')
+plt.scatter(df2.Age,df2['Income($)'],color='red')
+plt.scatter(df3.Age,df3['Income($)'],color='black')
+plt.scatter(km.cluster_centers_[:,0],km.cluster_centers_[:,1],color='purple',marker='*',label='centroid')
+plt.xlabel('Age')
+plt.ylabel('Income ($)')
+plt.legend()
+Out[202]:
+<matplotlib.legend.Legend at 0x159c7836128>
+
+Preprocessing using min max scaler
+In [203]:
+scaler = MinMaxScaler()
+
+scaler.fit(df[['Income($)']])
+df['Income($)'] = scaler.transform(df[['Income($)']])
+
+scaler.fit(df[['Age']])
+df['Age'] = scaler.transform(df[['Age']])
+In [204]:
+df.head()
+Out[204]:
+Name    Age Income($)   cluster
+0   Rob 0.058824    0.213675    2
+1   Michael 0.176471    0.384615    2
+2   Mohan   0.176471    0.136752    0
+3   Ismail  0.117647    0.128205    0
+4   Kory    0.941176    0.897436    1
+In [205]:
+plt.scatter(df.Age,df['Income($)'])
+Out[205]:
+<matplotlib.collections.PathCollection at 0x159c78f2358>
+
+In [206]:
+km = KMeans(n_clusters=3)
+y_predicted = km.fit_predict(df[['Age','Income($)']])
+y_predicted
+Out[206]:
+array([0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2])
+In [207]:
+df['cluster']=y_predicted
+df.head()
+Out[207]:
+Name    Age Income($)   cluster
+0   Rob 0.058824    0.213675    0
+1   Michael 0.176471    0.384615    0
+2   Mohan   0.176471    0.136752    0
+3   Ismail  0.117647    0.128205    0
+4   Kory    0.941176    0.897436    1
+In [208]:
+km.cluster_centers_
+Out[208]:
+array([[ 0.1372549 ,  0.11633428],
+       [ 0.72268908,  0.8974359 ],
+       [ 0.85294118,  0.2022792 ]])
+In [209]:
+df1 = df[df.cluster==0]
+df2 = df[df.cluster==1]
+df3 = df[df.cluster==2]
+plt.scatter(df1.Age,df1['Income($)'],color='green')
+plt.scatter(df2.Age,df2['Income($)'],color='red')
+plt.scatter(df3.Age,df3['Income($)'],color='black')
+plt.scatter(km.cluster_centers_[:,0],km.cluster_centers_[:,1],color='purple',marker='*',label='centroid')
+plt.legend()
+Out[209]:
+<matplotlib.legend.Legend at 0x159c7982f60>
+
+Elbow Plot
+In [210]:
+sse = []
+k_rng = range(1,10)
+for k in k_rng:
+    km = KMeans(n_clusters=k)
+    km.fit(df[['Age','Income($)']])
+    sse.append(km.inertia_)
+In [211]:
+plt.xlabel('K')
+plt.ylabel('Sum of squared error')
+plt.plot(k_rng,sse)
+Out[211]:
+[<matplotlib.lines.Line2D at 0x159c7a34978>]
+
+Exercise
+
+
+Use iris flower dataset from sklearn library and try to form clusters of flowers using petal width and length features. Drop other two features for simplicity.
+Figure out if any preprocessing such as scaling would help here
+Draw elbow plot and from that figure out optimal value of k

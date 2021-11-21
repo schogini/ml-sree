@@ -1,0 +1,48 @@
+
+
+import pandas as pd
+import numpy as np
+from sklearn import linear_model
+import matplotlib.pyplot as plt
+
+# 20-SL-LINEAR-REGRESSION-AREA-PRICE.txt
+
+df = pd.read_csv('drive/MyDrive/Colab Notebooks/homeprices.csv')
+df
+
+	area	price
+0	2600	550000
+1	3000	565000
+2	3200	610000
+3	3600	680000
+4	4000	725000
+
+%matplotlib inline
+plt.xlabel('area')
+plt.ylabel('price')
+plt.scatter(df.area,df.price,color='red',marker='+')
+
+
+
+import pandas as pd
+from matplotlib import pyplot as plt
+%matplotlib inline
+
+df = pd.read_csv("drive/MyDrive/Colab Notebooks/insurance_data.csv")
+df.head()
+
+age	bought_insurance
+0	22	0
+1	25	0
+2	47	1
+3	52	0
+4	46	1
+
+plt.scatter(df.age,df.bought_insurance,marker='+',color='red')
+
+
+
+MIXED MANY VAR SCATTER PLOT
+
+https://github.com/codebasics/py/blob/master/ML/13_kmeans/13_kmeans_tutorial.ipynb
+

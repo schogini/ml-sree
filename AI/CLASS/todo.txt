@@ -1,0 +1,14 @@
+
+
+Small exmaples neural nw, classification, linear regression
+
+Quik cheat sheet of AI
+
+
+
+SCALA
+object HelloWorld {
+  def main(args: Array[String]): Unit = {
+    println("Hello, world!")
+  }
+}

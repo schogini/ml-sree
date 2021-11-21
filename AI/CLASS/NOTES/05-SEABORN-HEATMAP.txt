@@ -1,0 +1,27 @@
+
+import seaborn as sn
+plt.figure(figsize = (10,7))
+sn.heatmap(cm, annot=True, fmt='d')
+plt.xlabel('Predicted')
+plt.ylabel('Truth')
+
+
+import matplotlib.pyplot as mp
+import pandas as pd
+import seaborn as sb
+  
+data = pd.read_csv('drive/MyDrive/Colab Notebooks/homeprices2.csv')
+
+# import file with data
+#data = pd.read_csv("C:\\Users\\Vanshi\\Desktop\\bestsellers.csv")
+  
+# prints data that will be plotted
+# columns shown here are selected by corr() since
+# they are ideal for the plot
+print(data.corr())
+  
+# plotting correlation heatmap
+dataplot = sb.heatmap(data.corr(), cmap="YlGnBu", annot=True)
+  
+# displaying heatmap
+mp.show()

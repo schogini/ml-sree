@@ -1,0 +1,7 @@
+
+
+Hyperparameters :
+Regularization parameter (λ) : Regularization is used to avoid over-fitting on the data. Higher the λ, higher will be regularization and the solution will be highly biased. Lower the λ, solution will be of high variance. An intermediate value is preferable.
+learning rate (α) : it estimates, by how much the θ values should be corrected while applying gradient descend algorithm during training. α should also be a moderate value.
+
+

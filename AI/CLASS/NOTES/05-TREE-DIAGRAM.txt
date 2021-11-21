@@ -1,0 +1,35 @@
+
+
+from sklearn.model_selection import train_test_split
+music_data = pd.read_csv("drive/MyDrive/Colab Notebooks/music.csv")
+X = music_data.drop(columns=['genre'])
+y = music_data['genre']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+import joblib
+joblib.dump(model, 'music-recommender.joblib')
+
+#model2 = joblib.load('music-recommender.joblib')
+#predictions = model2.predict(X_test)
+
+model2 = DecisionTreeClassifier()
+model2.fit(X, y)
+
+predictions = model2.predict([ [26,0]])
+predictions
+
+array(['Acoustic'], dtype=object)
+
+
+
+from sklearn import tree
+tree.export_graphviz(model2, out_file="music_rec.dot", feature_names=['age', 'gender'], 
+                     class_names = sorted(y.unique()), label='all', rounded=True, filled=True)
+
+! dot -Tpng music_rec.dot -o tree.png
+
+from IPython.display import Image
+Image(filename='tree.png') 
+
+
+

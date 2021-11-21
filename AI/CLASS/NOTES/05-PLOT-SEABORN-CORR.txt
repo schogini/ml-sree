@@ -1,0 +1,56 @@
+
+https://seaborn.pydata.org/introduction.html
+
+Statistical estimation in seaborn goes beyond descriptive statistics. For example, it is possible to enhance a scatterplot by including a linear regression model (and its uncertainty) using lmplot():
+
+
+# Import seaborn
+import seaborn as sns
+
+# Apply the default theme
+sns.set_theme()
+
+# Load an example dataset
+tips = sns.load_dataset("tips")
+print(tips)
+
+     total_bill   tip     sex smoker   day    time  size
+0         16.99  1.01  Female     No   Sun  Dinner     2
+1         10.34  1.66    Male     No   Sun  Dinner     3
+2         21.01  3.50    Male     No   Sun  Dinner     3
+3         23.68  3.31    Male     No   Sun  Dinner     2
+4         24.59  3.61  Female     No   Sun  Dinner     4
+..          ...   ...     ...    ...   ...     ...   ...
+239       29.03  5.92    Male     No   Sat  Dinner     3
+240       27.18  2.00  Female    Yes   Sat  Dinner     2
+241       22.67  2.00    Male    Yes   Sat  Dinner     2
+242       17.82  1.75    Male     No   Sat  Dinner     2
+243       18.78  3.00  Female     No  Thur  Dinner     2
+
+
+sns.lmplot(data=tips, x="total_bill", y="tip", col="time", hue="smoker")
+
+print(tips.corr())
+
+
+total_bill       tip      size
+total_bill    1.000000  0.675734  0.598315
+tip           0.675734  1.000000  0.489299
+size          0.598315  0.489299  1.000000
+
+
+# plotting correlation heatmap
+dataplot = sns.heatmap(tips.corr(), cmap="YlGnBu", annot=True)
+import matplotlib.pyplot as mp
+# displaying heatmap
+mp.show()
+
+
+
+sns.pairplot(tips)
+sns.pairplot(tips, x_vars=['total_bill','size'], y_vars='tip', height=7, aspect=0.7, kind='reg')
+
+
+https://colab.research.google.com/drive/1TnBOZh0Z5r5EeCbHUcWWAi7WGXjzOOqj#scrollTo=dnWjBe6nIe9S
+
+

@@ -1,0 +1,8 @@
+Confusion matrix 
+
+Confusion Matrix is a performance measurement for machine learning classification.
+
+https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62
+
+https://www.youtube.com/watch?v=2osIZ-dSPGE
+

@@ -1,0 +1,25 @@
+
+
+# Plot outputs
+plt.scatter(diabetes_X_test, diabetes_y_test, color="black")
+plt.plot(diabetes_X_test, diabetes_y_pred, color="blue", linewidth=3)
+
+plt.xticks(())
+plt.yticks(())
+
+plt.show()
+
+
+
+A=[1,2,3,4]
+B=[1,2,3,3]
+
+plt.scatter(A, B, color="black")
+plt.plot(A, B, color="blue", linewidth=1)
+
+plt.xticks(())
+plt.yticks(())
+plt.xlabel('area')
+plt.ylabel('price')
+# plt.show()
+

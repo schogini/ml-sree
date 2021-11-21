@@ -1,0 +1,424 @@
+BEST 100% COMPLETE THEORY WITH PICTURES https://bradleyboehmke.github.io/HOML/intro.html
+=======================================
+VERY GOOD AND SIMPLE COLLECTTION https://www.skillbasics.com
+==============================================================================
+VERY GOOD AND DEEPER https://www.youtube.com/channel/UCnVzApLJE2ljPZSeQylSEyg
+==============================================================================
+
+https://towardsdatascience.com/15-must-know-machine-learning-algorithms-44faf6bc758e
+https://inblog.in/Major-Machine-Learning-Algorithms-K8qQfEf2ey
+
+file:///Volumes/SREE256GB/SreeK8s/AI/CLASS/codebasics-py-git/ML/index.html
+--------------------------------------------------------------------------
+sree repo
+---------
+/Volumes/SREE256GB/ML-SREE
+SreeMacMin16GB-1215:ML-SREE sree$ ls -l
+total 32
+drwxr-xr-x   7 sree  staff   238 Nov  7 17:59 Decision-Tree-Salries
+drwxr-xr-x   3 sree  staff   102 Nov  7 23:36 HEATMAP
+drwxr-xr-x   7 sree  staff   238 Nov  7 17:53 Linear-Regression-Area-Bed-Age-Price
+drwxr-xr-x   7 sree  staff   238 Nov  7 17:53 Linear-Regression-Area-Price
+drwxr-xr-x   7 sree  staff   238 Nov  7 17:59 Logistic-Regression-Insurance
+drwxr-xr-x   7 sree  staff   238 Nov  7 17:59 Logistic-Regression-Iris
+drwxr-xr-x  10 sree  staff   340 Nov  7 16:24 data
+-rwxr-xr-x   1 sree  staff   685 Nov  7 16:46 demo.py
+drwxr-xr-x  38 sree  staff  1292 Nov  7 23:41 lib
+-rw-r--r--   1 sree  staff   832 Nov  7 16:46 model-iris-pickle.dat
+-rw-r--r--   1 sree  staff    52 Nov  7 17:24 push.sh
+-rw-r--r--   1 sree  staff   388 Nov  7 23:39 sree.sh
+SreeMacMin16GB-1215:ML-SREE sree$ 
+
+
+MAIN SREE DOC /Volumes/SREE256GB/SreeK8s/AI/CLASS
+-------------------------------------------------
+docker compose up
+http://localhost:7888/
+docker compose exec jp jupyter notebook list
+click on work folder to see all
+
+
+
+
+STAGES
+======
+1. Frame the problem
+   However, an understanding of how the machine learning system's solution will ultimately be used is important.
+2. Get the data
+   This step is data-centric: determine how much data is needed, what type of data is needed, 
+   where to get the data, assess legal obligations surrounding data acquisition... and get the data. 
+   Once you have the data, ensure it is appropriately anonymized, make certain you know what type of 
+   data it actually is (time series, observations, images, etc.), convert the data to a format you 
+   require of it, and create training, validation, and testing sets as warranted.
+3. Explore the data
+   This step in the checklist is akin to what is often referred to as Exploratory Data Analysis (EDA). 
+   The goal is to try and gain insights from the data prior to modeling. Recall that in the first 
+   step assumptions about the data were to be identified and explored; this is a good time to more 
+   deeply investigate these assumptions. Human experts can be of particular use in this step, 
+   answering questions about correlations which may not be obvious to the machine learning practitioner. 
+   Studying features and their characteristics is done here, as is general visualization of features 
+   and their values (think of how much easier it is, for example, to quickly identify outliers by 
+   box plot than by numerical interrogation). Documenting the findings of your exploration for 
+   later use is good practice.
+4. Prepare the data
+   Time to apply data transformations you identified as being worthy in the previous step. 
+   This step also includes any data cleaning you would perform, as well as both feature selection 
+   and engineering. Any feature scaling for value standardization and/or normalization would occur here as well.
+5. Model the data
+   Time to model the data, and whittle the initial set of models down to what appear to be the most promising bunch. 
+   (This is similar to the first modeling step in Chollet's process: good model → "too good" model, which you can 
+   read more about here) Such attempts may involve using samples of the full dataset to facilitate training 
+   times for preliminary models, models which should cut across a wide spectrum of categories (trees, 
+   neural networks, linear, etc.). Models should be built, measured, and compared to one another, and the 
+   types of errors made for each model should be investigated, as should the most significant features for 
+   each algorithm used. The best performing models should be shortlisted, which can then be fine-tuned afterwards.
+6. Fine-tune the models
+   The shortlisted models should now have their hyperparameters fine-tuned, and ensemble methods should be 
+   investigated at this stage. Full datasets should be used during this step, should dataset samples have 
+   been used in the previous modeling phase; no fine-tuned model should be selected as the "winner" 
+   without having been exposed to all training data or compared with other models which have also been 
+   exposed to all training data. Also, you didn't overfit, right?
+7. Present the solution
+   Time to present, so hopefully your visualization skills (or those of someone on the implementation team) 
+   are up to par! This is a much less technical step, though ensuring proper documentation of the technical 
+   aspects of the system at this point is also important. Answer questions for interested parties: Do 
+   interested parties understand the big picture? Does the solution achieve the objective? Have you 
+   conveyed assumptions and limitations? This is essentially a sales pitch, so ensure the takeaway is 
+   confidence in the system. Why do all this work if the result isn't understood and adopted?
+8. Launch the ML system
+   Get the machine learning system ready for production; it will need to be plugged into some wider 
+   production system or strategy. As a software solution, it will be exposed to unit testing prior, 
+   and should be adequately monitored once up and running. Retraining models on fresh or updated data 
+   is part of this process and should be taken into account here, even if thought had been given 
+   to this in an earlier step.
+
+MACHINE LEARNING
+================
+
+Supervised learning algorithms model the relationship between features (independent variables) and a label (target) given a set of observations. Then the model is used to predict the label of new observations using the features. Depending on the characteristics of target variable, it can be a classification (discrete target variable) or a regression (continuous target variable) task.
+Unsupervised learning algorithms try to find the structure in unlabeled data.
+Reinforcement learning works based on an action-reward principle. An agent learns to reach a goal by iteratively calculating the reward of its actions.
+
+SUPERVISED LEARNING
+===================
+
+LINEAR REGRESSION
+-----------------
+	Linear regression 				- supervised learning algorithm - continuous target(label) variable
+									  scatter plots or residual plots to check the linearity.
+	AREA PRICE
+	----------
+	20-SL-LINEAR-REGRESSION-AREA-PRICE.txt
+	https://colab.research.google.com/drive/1j-QpWBpnz73O2UK_9hO02r_TQmtYcZ1W
+	https://github.com/codebasics/py/blob/master/ML/1_linear_reg/1_linear_regression.ipynb
+
+	AREA BEDROOMS AGE
+	-----------------
+	20-SL-LINEAR-REGRESSION-MULTI-AREA-BED-AGE-PRICE.txt
+	https://colab.research.google.com/drive/189LWWWutLq4luDRQAUtFWI4iXafYNxHV
+	https://github.com/codebasics/py/blob/master/ML/2_linear_reg_multivariate/2_linear_regression_multivariate.ipynb
+
+	TV, RADIO AD / SALES - VERY GOOD SCATTER PLOT - PAIRPLOT ETC
+	------------------------------------------------------------
+	20-SL-LINEAR-REGRESSION-TV-RADIO-SALES-BIG.txt
+	https://github.com/justmarkham/scikit-learn-videos/blob/master/06_linear_regression.ipynb
+	https://colab.research.google.com/drive/1uxWX85htcA5P4Q4DubrEOCtLdbotAtaK
+
+LOGISTIC REGRESSION CLASSIFIER
+------------------------------
+	Logistic regression 			- supervised learning algorithm - binary classification - churn/spam/ad click
+									  sigmoid function, it takes linear equation(weight sum) and applies sigmod
+	AGE/INSURANCE PREDICTION
+	------------------------
+	20-LOGISTIC-REGRESSION-INSURANCE.txt
+	https://github.com/codebasics/py/blob/master/ML/7_logistic_reg/7_logistic_regression.ipynb
+
+	IRIS CLASSIFIER GOOD ONE
+	------------------------
+	20-SL-LOGISTIC-REGRESSION-CLASSIFIER-IRIS.txt
+	https://colab.research.google.com/drive/1bTAm84SOpsp8-pyVMjAWpQkK_05uc2ih
+	https://github.com/justmarkham/scikit-learn-videos/blob/master/03_getting_started_with_iris.ipynb
+
+	IRIS - KNN + LOGISTIC CLASSIFIER
+	--------------------------------
+	https://github.com/justmarkham/scikit-learn-videos/blob/master/04_model_training.ipynb
+
+SVM CLASSIFIER
+--------------
+	IRIS - SVM
+	----------
+	https://www.youtube.com/watch?v=FB5EdxAGxQg
+	https://github.com/codebasics/py/blob/master/ML/10_svm/10_svm.ipynb
+
+
+DECISION TREE
+-------------
+	Decision tree 					- supervised learning algorithm - mixture of feature data types (continuous, categorical, binary)
+									  partitions data by iteratively asking questions
+									  can easily be overfit if we do not set a limit on the depth
+
+	MUSIC/JAZZ
+	----------
+	20-SL-DECISION-TREE-FOR-REGRESSION-AND-CLASSIFICATION-MUSIC.txt
+	https://colab.research.google.com/drive/1Q6C2618P90i9TE9T9tjT7nOI30AlTSt1
+
+	GOOGLE - SALARIES
+	-----------------
+	20-SL-DECISION-TREE-FOR-REGRESSION-AND-CLASSIFICATION-SALARIES.txt
+	https://github.com/codebasics/py/blob/master/ML/9_decision_tree/9_decision_tree.ipynb
+
+RANDOM FOREST
+-------------
+	
+	DIGIT RECOGNITION
+	-----------------
+	IRIS CLASSIFIER
+	---------------
+	https://github.com/codebasics/py/blob/master/ML/11_random_forest/11_random_forest.ipynb
+
+	Random forest 					- supervised learning algorithm - 
+									  ensemble of decision trees combined with a technique called bagging
+									  In bagging, decision trees are used as parallel estimators
+									  reduces the risk of overfitting
+									  have uncorrelated decision trees by bootstrapping and feature randomness
+									  Bootsrapping is randomly selecting samples from training data with replacement. 
+									  They are called bootstrap samples
+
+Support vector machine 				- supervised learning algorithm - classification
+									  Support vectors are the closest data points to the decision boundary
+NAIVE BAYES
+-----------
+Naive bayes 						- supervised learning algorithm - classification
+									  naive - features are independent of each other and there is no correlation between features
+			EMAIL SPAM FILTER
+			-----------------
+			20-NAIVE-BAYES-CLASSIFIER-SPAM.txt
+			https://www.youtube.com/watch?v=nHIUYwN-5rM
+			https://github.com/codebasics/py/blob/master/ML/14_naive_bayes/14_naive_bayes_2_email_spam_filter.ipynb
+
+			TITANIC SURVIVOR
+			----------------
+			20-NAIVE-BAYES-CLASSIFIER-TITANIC.txt
+			https://www.youtube.com/watch?v=PPeaRc-r1OI
+			https://github.com/codebasics/py/blob/master/ML/14_naive_bayes/14_naive_bayes_1_titanic_survival_prediction.ipynb
+			NAIVE BAYES THEORY https://www.youtube.com/watch?v=Q8l0Vip5YUw&t=0s
+
+KNN
+	https://github.com/justmarkham/scikit-learn-videos/blob/master/04_model_training.ipynb
+	K-nearest neighbors KNN 		- supervised learning  algorithm- classification and regression
+									  value or class of a data point is determined by the data points around it
+
+	IRIS - KNN + LOGISTIC CLASSIFIER
+	--------------------------------
+	https://github.com/justmarkham/scikit-learn-videos/blob/master/04_model_training.ipynb
+
+Gradient Boosting algorithms
+GBM
+XGBoost
+LightGBM
+CatBoost
+
+Gradient boosted decision trees		- supervised learning algorithm - 
+									  combining decision trees with a technique called boosting
+									  Thus, GBDT is also an ensemble method.
+									  Boosting means combining a learning algorithm in series to achieve a 
+									  strong learner from many sequentially connected weak learners
+									  GBDT algorithm is so powerful that there are many upgraded versions of it 
+									  have been implemented such as XGBOOST, LightGBM, CatBoost
+LightGBM 							- LightGBM, created by researchers at Microsoft, is an implementation 
+									  of gradient boosted decision trees
+CatBoost
+XGBoost
+
+
+DEEP LEARNING NEURAL NETWORK
+============================
+
+ANN - ARTIFICIAL NEURAL NETWORK
+
+	SIMPLEST NEURON - BUY INSURANCE - LINEAR REGRESSION/SIGMOID
+	https://www.youtube.com/watch?v=VhRtaziEWd4
+	https://colab.research.google.com/drive/199UVD6IMLkMP9aA_mbT2FAQMSajYNj_O#scrollTo=gy4mN2HEaDkL
+
+	DIGIT CLASSIFIER SIMPLEST
+	-------------------------
+	20-DL-NN-DIGIT-CLASSIFIER.txt
+	https://youtu.be/iqQgED9vV7k
+	https://github.com/codebasics/deep-learning-keras-tf-tutorial/blob/master/1_digits_recognition/digits_recognition_neural_network.ipynb
+
+
+	SIMPLE 2 LAYER DIGIT RECOGNITION
+	--------------------------------
+	https://github.com/codebasics/deep-learning-keras-tf-tutorial/blob/master/1_digits_recognition/digits_recognition_neural_network.ipynb
+
+	KOLA DETECTION (NO GITHUB)
+	--------------
+	20-DL-NN-SIMPLENT-KOLA-DETECTION.txt
+	https://www.youtube.com/watch?v=ER2It2mIagI&list=PLeo1K3hjS3uu7CxAacxVndI4bE_o3BDtO&index=5
+
+CNN
+	IMAGE PROCESSING - 	REDUCED COMPUTATION BY FEATURE FILTERING (EXTRACTION) EG: 1920X1920X3 INPUTS PER IMAGE
+						IS TOO MUCH. IT ALSO USED RELU IN FEATURE EXTRACTION
+
+RNN
+	TECT/LANGUAGE PROCESSING - GOOGLE AUTO COMPLETION
+
+
+UNSUPERVISED (clustering & dimensionality reduction)
+====================================================
+
+K-MEANS CLUSTERING
+------------------
+	K-means clustering 		- unsupervised learning algorithm - partition-based clustering technique
+
+	NAME, AGE INCOME
+	----------------
+	https://www.youtube.com/watch?v=EItlUEPCIzM
+		0:00 introduction 
+		0:08 Theory - Explanation of Supervised vs Unsupervised learning and how kmeans clustering works. kmeans is unsupervised learning  
+		5:00 Elbow method 
+		7:33 Coding (start) (Cluster people income based on age) 
+		9:38 sklearn.cluster KMeans model creation and training  
+		14:56 Use MinMaxScaler from sklearn 
+	https://github.com/codebasics/py/blob/master/ML/13_kmeans/13_kmeans_tutorial.ipynb
+	https://github.com/codebasics/py/tree/master/ML/13_kmeans
+
+Apriori algorithm
+Hierarchical clustering 			- unsupervised learning algorithm - tree of clusters by iteratively grouping or separating data points
+										Agglomerative clustering
+										Divisive clustering
+DBSCAN clustering 					- unsupervised learning algorithm 
+										DBSCAN stands for density-based spatial clustering of applications with noise. 
+										It is able to find arbitrary shaped clusters and clusters with noise (i.e. outliers).
+Dimensionality Reduction Algorithms
+Principal component analysis 		- unsupervised learning algorithm
+										PCA is a dimensionality reduction algorithm which basically derives new features 
+										from the existing ones with keeping as much information as possible.
+										PCA is a linear dimensionality reduction algorithm
+
+
+
+REINFORCEMENT LEARNING
+======================
+the machine is exposed to an environment where it trains itself continuously using train and error. The machine learns from 
+past experience and tries to capture the best possible knowledge to make accurate bussinss decision
+Example of Reinforcement Learing:- Markov Decision Process
+
+LUNAR LANDING - https://www.youtube.com/watch?v=nRHjymV2PX8
+https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-openai-gym/
+https://www.analyticsvidhya.com/blog/2017/01/introduction-to-reinforcement-learning-implementation/
+
+ALL MACHINE LEARNING
+	https://github.com/codebasics/py/tree/master/ML
+
+	1_linear_reg
+	2_linear_reg_multivariate
+	3_gradient_descent
+	4_save_model
+	5_one_hot_encoding
+	6_train_test_split
+	7_logistic_reg
+	8_logistic_reg_multiclass
+	9_decision_tree
+	FeatureEngineering
+
+	10_svm
+	11_random_forest
+	12_KFold_Cross_Validation
+	13_kmeans
+	14_naive_bayes
+	15_gridsearch
+	16_regularization
+	17_knn_classification
+	18_PCA
+	19_Bagging
+
+ALL DEEP LEARNING
+	https://github.com/codebasics/deep-learning-keras-tf-tutorial
+
+	1_digits_recognition
+	1_keras_fashion_mnist_neural_net
+	2_activation_functions
+	3_derivatives
+	4_matrix_math
+	5_loss
+	6_gradient_descent
+	7_nn_from_scratch
+	8_sgd_vs_gd
+	9_tensorboard
+	10_gpu_benchmarking
+	11_chrun_prediction
+	12_precision_recall
+	13_dropout_layer
+	14_imbalanced
+	16_cnn_cifar10_small_image_classification
+	17_data_augmentation
+	18_transfer_learning
+
+	22_word_embedding
+	42_word2vec_gensim
+	43_distributed_training
+	43_text_classification_rnn
+	44_tf_data_pipeline
+	45_prefatch
+	46_BERT_intro
+	47_BERT_text_classification
+	48_tf_serving
+	49_quantization
+
+https://www.youtube.com/watch?v=hd1W4CyPX58&list=PL5-da3qGB5ICeMbQuqbbCOQWcS6OYBr5A&index=4&t=30s
+Getting started in scikit-learn with the famous iris dataset
+
+https://github.com/justmarkham/scikit-learn-videos
+	01_machine_learning_intro.ipynb
+	02_machine_learning_setup.ipynb
+	03_getting_started_with_iris.ipynb
+	04_model_training.ipynb
+	05_model_evaluation.ipynb
+	06_linear_regression.ipynb
+	07_cross_validation.ipynb
+	08_grid_search.ipynb
+	09_classification_metrics.ipynb
+	10_categorical_features.ipynb
+
+
+https://github.com/codebasics/py/tree/master/ML/FeatureEngineering
+1_outliers outliers percentile
+2_outliers_z_score
+3_outlier_IQR
+
+
+https://github.com/codebasics/py/tree/master/pandas
+1_intro
+2_dataframe_basics - missing data tutorial
+3_different_ways_of_creating_dataframe
+4_read_write_to_excel
+5_handling_missing_data_fillna_dropna_interpolate
+6_handling_missing_data_replace
+7_group_by
+8_concat
+9_merge
+10_pivot
+11_melt
+12_stack
+13_crosstab
+14_ts_datetimeindex
+15_ts_date_range
+16_ts_holidays - pandas time series analysis: handling holidays tutorial
+17_ts_to_date_time - Added time series to_datetime tutorial
+18_ts_period - Added timezone tutorial
+19_ts_timezone - Added timezone tutorial
+20_shift_lag - pandas shift tutorial
+21_sql
+
+MATPLOTLIB
+https://github.com/codebasics/py/tree/master/matpltlib
+1_intro
+2_format_strings
+3_legends_grid_axes_labels
+4_bar_chart
+5_histogram
+6_pie_chart
+7_save_chart
+10_subplots.ipynb
+

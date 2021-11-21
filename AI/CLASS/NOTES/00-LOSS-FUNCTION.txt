@@ -1,0 +1,5 @@
+
+Loss function :
+In LR, we use mean squared error as the metric of loss. The deviation of expected and actual outputs will be squared and sum up. Derivative of this loss will be used by gradient descend algorithm.
+
+

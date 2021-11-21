@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+
+  md:
+      image: dannyben/madness 
+      ports:
+          - '7999:3000'
+      volumes:
+          - ./md:/docs
+
+# SreeMacMin16GB-1215:SreeMD sree$ docker compose exec jp jupyter notebook password
+# Enter password: sree123
+# [NotebookPasswordApp] Wrote hashed password to /home/jovyan/.jupyter/jupyter_notebook_config.json
+# The command:
+#
+# jupyter notebook list
+# will show you the URLs of running servers with their tokens, which you can copy and paste into your browser. For example:
+# Currently running servers:
+# http://localhost:8888/?token=c8de56fa... :: /Users/you/notebooks
+# or you can paste just the token value into the password field on this page.
+
+  jp:
+      image: schogini/jp
+      ports:
+          - '7888:8888'
+      volumes:
+          - .:/home/jovyan/work
+          - ./md/Jupyter:/home/jovyan/md
+
+# docker compose exec jp bash
+# cd work
+# jupyter nbconvert --to markdown np01.ipynb 
+
+# docker compose exec jp md/j2md.sh

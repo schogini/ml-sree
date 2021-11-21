@@ -1,0 +1,36 @@
+
+
+import pandas as pd
+import numpy as np
+from sklearn import linear_model
+import matplotlib.pyplot as plt
+
+
+df = pd.read_csv('drive/MyDrive/Colab Notebooks/homeprices.csv')
+df
+
+area	price
+0	2600	550000
+1	3000	565000
+2	3200	610000
+3	3600	680000
+4	4000	725000
+
+%matplotlib inline
+plt.xlabel('area')
+plt.ylabel('price')
+plt.scatter(df.area,df.price,color='red',marker='+')
+
+
+new_df = df.drop('price',axis='columns')
+new_df
+
+	area
+0	2600
+1	3000
+2	3200
+3	3600
+4	4000
+
+price = df.price
+price

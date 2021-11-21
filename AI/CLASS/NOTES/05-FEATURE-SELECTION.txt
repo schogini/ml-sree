@@ -1,0 +1,154 @@
+
+# conventional way to import pandas
+import pandas as pd
+
+# read CSV file from the 'data' subdirectory using a relative path
+data = pd.read_csv('drive/MyDrive/Colab Notebooks/Advertising.csv', index_col=0)
+
+# display the first 5 rows
+data.head()
+
+TV      Radio   Newspaper       Sales
+1       230.1   37.8    69.2    22.1
+2       44.5    39.3    45.1    10.4
+3       17.2    45.9    69.3    9.3
+4       151.5   41.3    58.5    18.5
+5       180.8   10.8    58.4    12.9
+
+
+# conventional way to import seaborn
+import seaborn as sns
+
+# allow plots to appear within the notebook
+%matplotlib inline
+
+# visualize the relationship between the features and the response using scatterplots
+sns.pairplot(data, x_vars=['TV','Radio','Newspaper'], y_vars='Sales', height=7, aspect=0.7, kind='reg')
+
+# create a Python list of feature names
+feature_cols = ['TV', 'Radio', 'Newspaper']
+
+# use the list to select a subset of the original DataFrame
+X = data[feature_cols]
+
+# equivalent command to do this in one line
+X = data[['TV', 'Radio', 'Newspaper']]
+
+# print the first 5 rows
+X.head()
+
+
+TV	Radio	Newspaper
+1	230.1	37.8	69.2
+2	44.5	39.3	45.1
+3	17.2	45.9	69.3
+4	151.5	41.3	58.5
+5	180.8	10.8	58.4
+
+
+# check the type and shape of X
+print(type(X))
+print(X.shape)
+
+<class 'pandas.core.frame.DataFrame'>
+(200, 3)
+
+# select a Series from the DataFrame
+y = data['Sales']
+
+# equivalent command that works if there are no spaces in the column name
+y = data.Sales
+
+# print the first 5 values
+y.head()
+
+1    22.1
+2    10.4
+3     9.3
+4    18.5
+5    12.9
+Name: Sales, dtype: float64
+
+# check the type and shape of y
+print(type(y))
+print(y.shape)
+
+<class 'pandas.core.series.Series'>
+(200,)
+
+# Splitting X and y into training and testing sets
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
+
+# default split is 75% for training and 25% for testing
+print(X_train.shape)
+print(y_train.shape)
+print(X_test.shape)
+print(y_test.shape)
+
+(150, 3)
+(150,)
+(50, 3)
+(50,)
+
+
+# Linear regression in scikit-learn
+
+# import model
+from sklearn.linear_model import LinearRegression
+
+# instantiate
+linreg = LinearRegression()
+
+# fit the model to the training data (learn the coefficients)
+linreg.fit(X_train, y_train)
+
+# LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
+
+# print the intercept and coefficients
+print(linreg.intercept_)
+print(linreg.coef_)
+
+
+# pair the feature names with the coefficients
+list(zip(feature_cols, linreg.coef_))
+
+[('TV', 0.046564567874150295),
+ ('Radio', 0.17915812245088839),
+ ('Newspaper', 0.0034504647111804343)]
+
+
+ # make predictions on the testing set
+y_pred = linreg.predict(X_test)
+
+
+import numpy as np
+# calculate MAE using scikit-learn
+from sklearn import metrics
+print(np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+
+
+# create a Python list of feature names
+feature_cols = ['TV', 'Radio']
+
+# use the list to select a subset of the original DataFrame
+X = data[feature_cols]
+
+# select a Series from the DataFrame
+y = data.Sales
+
+# split into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
+
+# fit the model to the training data (learn the coefficients)
+linreg.fit(X_train, y_train)
+
+# make predictions on the testing set
+y_pred = linreg.predict(X_test)
+
+# compute the RMSE of our predictions
+print(np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+
+
+

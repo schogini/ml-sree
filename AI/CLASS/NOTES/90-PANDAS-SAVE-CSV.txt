@@ -1,0 +1,29 @@
+
+
+area_df
+
+area    prices
+0       1000    3.164041e+05
+1       1500    3.842979e+05
+2       2300    4.929281e+05
+3       3540    6.613048e+05
+4       4120    7.400616e+05
+5       4560    7.998082e+05
+6       5490    9.260908e+05
+7       3460    6.504418e+05
+8       4750    8.256079e+05
+9       2300    4.929281e+05
+10      9000    1.402705e+06
+11      8600    1.348390e+06
+12      7100    1.144709e+06
+
+area_df.to_csv("prediction.csv")
+
+
+
+ls -l
+total 12
+drwx------ 6 root root 4096 Nov  3 17:43 drive/
+-rw-r--r-- 1 root root  341 Nov  3 18:00 prediction.csv
+drwxr-xr-x 1 root root 4096 Nov  1 13:35 sample_data/
+

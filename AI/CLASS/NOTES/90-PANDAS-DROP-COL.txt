@@ -1,0 +1,19 @@
+
+df = pd.read_csv('drive/MyDrive/Colab Notebooks/homeprices.csv')
+df
+
+area	price
+0	2600	550000
+1	3000	565000
+2	3200	610000
+3	3600	680000
+4	4000	725000
+
+new_df = df.drop('price',axis='columns')
+new_df
+
+
+inputs = df.drop('salary_more_then_100k',axis='columns')
+
+
+

@@ -1,0 +1,50 @@
+
+
+https://medium.com/towards-data-science/random-forest-in-python-24d0893d51c0
+A Practical End-to-End Machine Learning Example
+
+The problem we will tackle is predicting the max temperature for tomorrow in our city using one year of past weather data
+
+What we do have access to is one year of historical max temperatures, 
+the temperatures for the previous two days, and an estimate from a 
+friend who is always claiming to know everything about the weather. 
+
+This is a supervised, regression machine learning problem.
+
+It’s supervised because we have both the features (data for the city) 
+and the targets (temperature) that we want to predict.
+
+During training, we give the random forest both the features and 
+targets and it must learn how to map the data to a prediction.
+
+Moreover, this is a regression task because the target value is 
+continuous (as opposed to discrete classes in classification). 
+
+1 State the question and determine required data
+  “can we predict the max temperature tomorrow for our city?”
+
+2 Acquire the data in an accessible format
+
+To use a realistic example, I retrieved weather data for Seattle, 
+WA from 2016 using the NOAA Climate Data Online tool. Generally, 
+about 80% of the time spent in data analysis is cleaning and retrieving data,
+https://drive.google.com/file/d/1pko9oRmCllAxipZoa3aoztGZfPAD2iwj/view?usp=sharing
+
+# Pandas is used for data manipulation
+import pandas as pd
+# Read in data and display first 5 rows
+features = pd.read_csv('temps.csv')
+features.head(5)
+
+
+3 Identify and correct missing data points/anomalies as required
+4 Prepare the data for the machine learning model
+5 Establish a baseline model that you aim to exceed
+6 Train the model on the training data
+7 Make predictions on the test data
+8 Compare predictions to the known test set targets and calculate performance metrics
+9 If performance is not satisfactory, adjust the model, acquire more data, or try a different modeling technique
+10 Interpret model and report results visually and numerically
+
+
+
