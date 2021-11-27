@@ -1,0 +1,7 @@
+
+
+kaggle kernels pull dansbecker/your-first-machine-learning-model
+
+mv ~/Downloads/melb_data.csv.zip .
+unzip melb_data.csv.zip 
+
